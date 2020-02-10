@@ -1,0 +1,7 @@
+# robots.txt generated at http://www.xuehuayu.cn/
+User-agent: *
+Disallow: 
+Disallow: /adfilter/
+Sitemap: https://www.xuehuayu.cn/baidusitemap.xml
+Sitemap: https://www.xuehuayu.cn/sitemap.xml
+

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Nie ♥ Liu</title>
+  <link rel="stylesheet" href="./css/default.css" type="text/css">
+  <script src="./js/jquery.min.3.4.1.js" type="text/javascript"></script>
+  <script src="./js/garden.js" type="text/javascript"></script>
+  <script src="./js/functions.js" type="text/javascript"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-150860401-1" type="text/javascript"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);};gtag('js',new Date());gtag('config','UA-150860401-1');</script>
+  <script>var _hmt=_hmt||[];(function(){var hm=document.createElement("script");hm.src="https://hm.baidu.com/hm.js?e94dd140913b2756815fe4a66fc73b88";var s=document.getElementsByTagName("script")[0];s.parentNode.insertBefore(hm,s)})();</script>
+  <script type="text/javascript", src="//js.fundebug.cn/fundebug.2.0.0.min.js", apikey="0b7cd004d208c5ab1739e9aba226862e9580af0d1c6042d40ad5710595e832e3", crossorigin="anonymous"></script>
+</head>
+<body>
+  <audio autoplay="autopaly" loop="loop">
+    <source src="./data/bgm.mp3" type="audio/mp3">
+  </audio>
+  <div id="mainDiv">
+    <div id="content">
+      <div id="code">
+        <span class="comments">/**</span><br />
+        <span class="space" /><span class="comments">* 当我第一眼见到你，就深深的思恋上了你！</span><br />
+        <span class="space" /><span class="comments">* 所以我用程序员的技术来表达我对你的爱！</span><br />
+        <span class="space" /><span class="comments">*/</span><br />
+        Boy i = <span class="keyword">new</span> Boy(<span class="string">"Nie"</span>);<br />
+        Girl u = <span class="keyword">new</span> Girl(<span class="string">"Liu"</span>);<br />
+        <span class="comments">// Sept 7, 2018, I told you I love you. </span><br />
+        i.love(u);<br />
+        <span class="comments">// Luckily, you accepted and became my girlfriend eversince.</span><br />
+        u.accepted();<br />
+        <span class="comments">// Since then, I miss you every day.</span><br />
+        i.miss(u);<br />
+        <span class="comments">// And take care of you and our love.</span><br />
+        i.takeCareOf(u);<br />
+        <span class="comments">// You say that you won't be so easy to marry me.</span><br />
+        <span class="comments">// So I keep waiting and I have confidence that you will.</span><br />
+        <span class="keyword">boolean</span> isHesitate = <span class="keyword">true</span>;<br />
+        <span class="keyword">while</span> (isHesitate) {<br />
+        <span class="placeholder" />i.waitFor(u);<br />
+        <span class="placeholder" /><span class="comments">// I think it is an important decision</span><br />
+        <span class="placeholder" /><span class="comments">// and you should think it over.</span><br />
+        <span class="placeholder" />isHesitate = u.thinkOver();<br />
+        }<br />
+        <span class="comments">// After a romantic wedding, we will live happily ever after.</span><br />
+        i.marry(u);<br />
+        i.liveHappilyWith(u);<br />
+      </div>
+      <div id="loveHeart">
+        <canvas id="garden"></canvas>
+        <div id="words">
+          <div id="messages">
+            LiuLiu, We're already in love：
+            <div id="elapseClock">
+            </div>
+            <div id="loveu">
+              Love you forever and ever.<br />
+              <div class="signature">- Nie</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var offsetX = $("#loveHeart").width() / 2;
+      var offsetY = $("#loveHeart").height() / 2 - 55;
+      var together = +new Date('2018/09/07 18:00:00');
+      function loop (nowDate, together) {
+        timeElapse(nowDate, together);
+        setInterval(function () {
+          nowDate += 1000
+          timeElapse(nowDate, together);
+        }, 1e3);
+      }
+      if (!document.createElement('canvas').getContext) {
+        var msg = document.createElement("div");
+        msg.id = "errorMsg";
+        msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
+        document.body.appendChild(msg);
+        $("#code").css("display", "none")
+        $("#copyright").css("position", "absolute");
+        $("#copyright").css("bottom", "10px");
+        document.execCommand("stop");
+      } else {
+        setTimeout(function () {
+          startHeartAnimation();
+        }, 5000);
+        $.ajax({
+          url: 'https://quan.suning.com/getSysTime.do',
+          type: 'get',
+          dataType: 'json',
+          success: function(data){
+            console.info('使用网络时间', data.sysTime2.replace(/-/g, '/'))
+            var nowDate = +new Date(data.sysTime2.replace(/-/g, '/'))
+            console.log(nowDate)
+            loop (nowDate, together)
+          },
+          error: function(type) {
+            console.info('使用本地时间', new Date())
+            var nowDate = +new Date()
+            loop (nowDate, together)
+          }
+        })
+        adjustCodePosition();
+        $("#code").typewriter();
+      }
+    </script>
+</body>
+
+</html>
