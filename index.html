@@ -92,13 +92,13 @@
           type: 'get',
           dataType: 'json',
           success: function(data){
-            console.info('使用网络时间', data.sysTime2.replace(/-/g, '/'))
+
             var nowDate = +new Date(data.sysTime2.replace(/-/g, '/'))
             console.log(nowDate)
             loop (nowDate, together)
           },
           error: function(type) {
-            console.info('使用本地时间', new Date())
+
             var nowDate = +new Date()
             loop (nowDate, together)
           }
